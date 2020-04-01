@@ -1,12 +1,24 @@
 package com.jiahaoliuliu.movieslistinstant
 
-class MoviesRepository {
+class MoviesRepository private constructor(){
+
+    private object HOLDER {
+        val INSTANCE = MoviesRepository()
+    }
+
+    companion object {
+        val instance: MoviesRepository by lazy {HOLDER.INSTANCE}
+    }
 
     private val moviesMap: Map<Int, Movie> = MoviesListEnum.toMoviesList()
     private val moviesList = ArrayList(moviesMap.values)
 
     fun getMoviesList(): List<Movie> {
         return moviesList
+    }
+
+    fun getMovieById(movieId: Int): Movie? {
+        return moviesMap[movieId]
     }
 
     private enum class MoviesListEnum(
