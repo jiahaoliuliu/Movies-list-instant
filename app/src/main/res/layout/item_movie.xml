@@ -19,6 +19,7 @@
             android:layout_height="match_parent"
             app:layout_constraintDimensionRatio="3:4"
             android:scaleType="centerCrop"
+            app:imageResource="@{movie.imageId}"
             tools:src="@drawable/movie_bloodshot"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
