@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import com.jiahaoliuliu.movieslistinstant.databinding.ActivityMovieDetailsBinding
 import java.lang.IllegalArgumentException
@@ -36,8 +37,26 @@ class MovieDetailsActivity : AppCompatActivity() {
         val movie = moviesRepository.getMovieById(movieId)
         movie?.let {
             binding.movie = movie
+            setupToolbar(movie.title)
         } ?: run{
             throw IllegalArgumentException("Movie not found")
         }
+    }
+
+    private fun setupToolbar(title: String) {
+        setSupportActionBar(binding.toolbar)
+        binding.toolbar.title = title
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
