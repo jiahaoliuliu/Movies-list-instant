@@ -1,3 +1,4 @@
 rootProject.name='Movies list instant'
 include ':movie-base'
 include ':movie-app'
+include ':movie-instant'

@@ -1,0 +1,10 @@
+apply plugin: 'com.android.instantapp'
+
+android {
+    buildToolsVersion rootProject.buildTools
+    compileSdkVersion rootProject.compileSdk
+}
+
+dependencies {
+    api project(':movie-base')
+}
