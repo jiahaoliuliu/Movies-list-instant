@@ -7,4 +7,5 @@ android {
 
 dependencies {
     api project(':movie-base')
+    implementation project(':movie_details')
 }

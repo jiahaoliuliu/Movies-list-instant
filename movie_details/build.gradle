@@ -1,0 +1,17 @@
+apply plugin: 'com.android.feature'
+
+android {
+    buildToolsVersion rootProject.buildTools
+    compileSdkVersion rootProject.compileSdk
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+    }
+}
+
+dependencies {
+    api project(':movie-base')
+}
