@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     buildToolsVersion rootProject.buildTools
@@ -29,5 +30,6 @@ android {
 }
 
 dependencies {
-    api project(path: ':movie-base')
+    api project(':movie-base')
+    kapt "com.android.databinding:compiler:$androidGradle"
 }
