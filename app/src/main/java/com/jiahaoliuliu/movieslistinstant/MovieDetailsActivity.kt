@@ -16,7 +16,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private var movieId = DEFAULT_MOVIE_ID
 
     companion object {
-        private const val INTENT_EXTRA_MOVIE_ID = "Movie id"
+        private const val INTENT_EXTRA_MOVIE_ID = "id"
         private const val DEFAULT_MOVIE_ID = -1
 
         fun getIntent(context: Context, movieId: Int): Intent {
@@ -28,7 +28,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        movieId = intent.getIntExtra(INTENT_EXTRA_MOVIE_ID, DEFAULT_MOVIE_ID)
+        movieId = getMovieId()
         if (movieId == DEFAULT_MOVIE_ID) {
             throw IllegalArgumentException("You must pass the movie id on the intent")
         }
@@ -58,5 +58,18 @@ class MovieDetailsActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun getMovieId(): Int {
+        if (intent.action == Intent.ACTION_VIEW) {
+            intent.data?.let {uri ->
+                uri.getQueryParameter(INTENT_EXTRA_MOVIE_ID)?.toInt()?.let {
+                    return it
+                }
+            }
+        } else {
+            return intent.getIntExtra(INTENT_EXTRA_MOVIE_ID, DEFAULT_MOVIE_ID)
+        }
+        return DEFAULT_MOVIE_ID
     }
 }
