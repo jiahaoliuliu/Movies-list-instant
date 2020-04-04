@@ -8,7 +8,7 @@ android {
     compileSdkVersion rootProject.compileSdk
 
     defaultConfig {
-        applicationId "com.jiahaoliuliu.movie.app"
+        applicationId "com.jiahaoliuliu.movieslistinstant.app"
         minSdkVersion rootProject.minSdk
         targetSdkVersion rootProject.targetSdk
         versionCode rootProject.versionCode
@@ -27,8 +27,6 @@ android {
     dataBinding {
         enabled = true
     }
-//    dynamicFeatures = [":movie-instant"]
-//    dynamicFeatures = [":movie-details"]
 }
 
 dependencies {

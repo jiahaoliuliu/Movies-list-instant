@@ -1,17 +1,23 @@
-package com.jiahaoliuliu.movieslistinstant
+package com.jiahaoliuliu.movieslistinstant.details
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.databinding.DataBindingUtil
-import com.jiahaoliuliu.movieslistinstant.databinding.ActivityMovieDetailsBinding
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
+import com.jiahaoliuliu.movieslistinstant.MoviesRepository
 import java.lang.IllegalArgumentException
 
 class MovieDetailsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMovieDetailsBinding
+    // Views
+    private lateinit var toolbar: Toolbar
+    private lateinit var coverImage: ImageView
+    private lateinit var description: TextView
+
     private val moviesRepository = MoviesRepository.instance
     private var movieId = DEFAULT_MOVIE_ID
 
@@ -32,20 +38,26 @@ class MovieDetailsActivity : AppCompatActivity() {
         if (movieId == DEFAULT_MOVIE_ID) {
             throw IllegalArgumentException("You must pass the movie id on the intent")
         }
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
         val movie = moviesRepository.getMovieById(movieId)
         movie?.let {
-            binding.movie = movie
+            findViews()
             setupToolbar(movie.title)
+            coverImage.setImageResource(movie.imageId)
+            description.text = movie.description
         } ?: run{
             throw IllegalArgumentException("Movie not found")
         }
     }
 
+    private fun findViews() {
+        toolbar = findViewById(R.id.toolbar)
+        coverImage = findViewById(R.id.cover)
+        description = findViewById(R.id.description)
+    }
+
     private fun setupToolbar(title: String) {
-        setSupportActionBar(binding.toolbar)
-        binding.toolbar.title = title
+        setSupportActionBar(toolbar)
+        toolbar.title = title
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

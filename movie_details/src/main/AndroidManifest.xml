@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.jiahaoliuliu.movie.details">
+    package="com.jiahaoliuliu.movieslistinstant.details">
 
     <dist:module
         dist:instant="false"
@@ -10,5 +10,28 @@
         </dist:delivery>
         <dist:fusing dist:include="true" />
     </dist:module>
+
+    <application>
+        <activity android:name="com.jiahaoliuliu.movieslistinstant.details.MovieDetailsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="http"
+                    android:host="movieslist.com"
+                    android:pathPattern="/details" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="https"
+                    android:host="movieslist.com"
+                    android:pathPattern="/details" />
+            </intent-filter>
+        </activity>
+    </application>
 </manifest>
 
