@@ -44,8 +44,8 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun setupToolbar(title: String) {
-        setSupportActionBar(binding.toolbar)
         binding.toolbar.title = title
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
