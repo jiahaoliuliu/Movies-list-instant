@@ -12,7 +12,7 @@ import java.lang.IllegalArgumentException
 class MovieDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieDetailsBinding
-    private val moviesRepository = MoviesRepository.instance
+    private val moviesDetailsRepository = MoviesDetailsRepository.instance
     private var movieId = DEFAULT_MOVIE_ID
 
     companion object {
@@ -34,18 +34,18 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
-        val movie = moviesRepository.getMovieById(movieId)
+        val movie = moviesDetailsRepository.getMovieDetailsById(movieId)
         movie?.let {
-            binding.movie = movie
-            setupToolbar(movie.title)
+            binding.movieDetails = it
+            setupToolbar(it.title)
         } ?: run{
             throw IllegalArgumentException("Movie not found")
         }
     }
 
     private fun setupToolbar(title: String) {
-        setSupportActionBar(binding.toolbar)
         binding.toolbar.title = title
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
