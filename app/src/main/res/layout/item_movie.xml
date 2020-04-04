@@ -6,7 +6,7 @@
     <data>
         <variable
             name="movie"
-            type="com.jiahaoliuliu.movieslistinstant.Movie"/>
+            type="com.jiahaoliuliu.movieslistinstant.IMovie"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             app:layout_constraintDimensionRatio="3:4"
             android:scaleType="centerCrop"
-            app:imageResource="@{movie.imageId}"
+            app:imageResource="@{movie.thumbnailId}"
             tools:src="@drawable/movie_bloodshot"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
