@@ -6,7 +6,7 @@
     <data>
         <variable
             name="movieDetails"
-            type="com.jiahaoliuliu.movieslistinstant.moviedetails.MovieDetails"/>
+            type="com.jiahaoliuliu.datalayer.MovieDetails"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

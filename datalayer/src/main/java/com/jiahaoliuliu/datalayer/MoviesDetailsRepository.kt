@@ -1,6 +1,4 @@
-package com.jiahaoliuliu.movieslistinstant.moviedetails
-
-import com.jiahaoliuliu.datalayer.MoviesRepository
+package com.jiahaoliuliu.datalayer
 
 class MoviesDetailsRepository private constructor(){
 
@@ -14,12 +12,12 @@ class MoviesDetailsRepository private constructor(){
     }
 
     private val moviesRepository =
-        com.jiahaoliuliu.datalayer.MoviesRepository.instance
+        MoviesRepository.instance
 
-    private val movieImagePairsMap: Map<Int, Pair<Int, Int>> =
+    private val movieImagePairsMap: Map<Int, Pair<Int, String>> =
         MovieImagePairsEnum.toMap()
 
-    fun getMovieDetailsById(movieId: Int): com.jiahaoliuliu.movieslistinstant.moviedetails.MovieDetails? {
+    fun getMovieDetailsById(movieId: Int): MovieDetails? {
         val movieNullable = moviesRepository.getMovieById(movieId)
         movieNullable?.let { movie ->
             val movieImagePairNullable = movieImagePairsMap[movieId]
@@ -39,35 +37,35 @@ class MoviesDetailsRepository private constructor(){
 
     private enum class MovieImagePairsEnum(
         val id: Int,
-        val imageId: Int
+        val imageUrl: String
     ) {
         BLOOD_SHOT(
             1,
-            R.drawable.movie_bloodshot
+            "https://raw.githubusercontent.com/jiahaoliuliu/Movies-list-instant/master/app/src/main/res/drawable/movie_bloodshot.jpg"
         ),
         BIRDS_OF_PRAY(
             2,
-            R.drawable.movie_birds_of_prey
+            "https://raw.githubusercontent.com/jiahaoliuliu/Movies-list-instant/master/app/src/main/res/drawable/movie_birds_of_prey.jpg"
         ),
         SONIC_THE_HEDGEHOG(
             3,
-            R.drawable.movie_sonic_the_hedgehog
+            "https://raw.githubusercontent.com/jiahaoliuliu/Movies-list-instant/master/app/src/main/res/drawable/movie_sonic_the_hedgehog.jpg"
         ),
         FROZEN_II(
             4,
-            R.drawable.movie_frozen_ii
+            "https://raw.githubusercontent.com/jiahaoliuliu/Movies-list-instant/master/app/src/main/res/drawable/movie_frozen_ii.jpg"
         ),
         JUMANJI(
             5,
-            R.drawable.movie_jumanji_the_next_level
+            "https://raw.githubusercontent.com/jiahaoliuliu/Movies-list-instant/master/app/src/main/res/drawable/movie_jumanji_the_next_level.jpg"
         )
         ;
 
         companion object {
-            fun toMap(): Map<Int, Pair<Int, Int>> {
-                val movieImagePairsMap = HashMap<Int, Pair<Int, Int>>()
+            fun toMap(): Map<Int, Pair<Int, String>> {
+                val movieImagePairsMap = HashMap<Int, Pair<Int, String>>()
                 values().map {pair ->
-                    movieImagePairsMap.put(pair.id, Pair(pair.id, pair.imageId)) }
+                    movieImagePairsMap.put(pair.id, Pair(pair.id, pair.imageUrl)) }
                 return movieImagePairsMap
             }
         }
