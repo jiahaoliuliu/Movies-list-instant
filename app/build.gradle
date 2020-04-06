@@ -26,6 +26,7 @@ android {
         enabled = true
     }
 
+    dynamicFeatures = [":movie_details"]
 }
 
 dependencies {
