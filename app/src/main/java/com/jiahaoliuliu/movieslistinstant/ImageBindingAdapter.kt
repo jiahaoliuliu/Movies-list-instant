@@ -5,7 +5,6 @@ import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 
 class ImageBindingAdapter {
-
     companion object {
         private const val DRAWABLE = "drawable"
 

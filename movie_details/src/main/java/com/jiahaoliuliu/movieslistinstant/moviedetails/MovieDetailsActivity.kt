@@ -17,7 +17,6 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailsBinding
     private val moviesRepository = MoviesRepository.instance
     private var movieId = DEFAULT_MOVIE_ID
-    private lateinit var glide: RequestManager
 
     companion object {
         private const val INTENT_EXTRA_MOVIE_ID = "id"
@@ -32,7 +31,6 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        glide = Glide.with(this)
         movieId = getMovieId()
         if (movieId == DEFAULT_MOVIE_ID) {
             throw IllegalArgumentException("You must pass the movie id on the intent")
@@ -43,7 +41,6 @@ class MovieDetailsActivity : AppCompatActivity() {
         movie?.let {
             setupToolbar(it.title)
             binding.movie = it
-            glide.load(it.imageUrl).into(binding.cover)
         } ?: run{
             throw IllegalArgumentException("Movie not found")
         }
