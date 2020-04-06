@@ -12,7 +12,7 @@ class MoviesDetailsRepository private constructor(){
 
     private val moviesRepository = MoviesRepository.instance
 
-    private val movieImagePairsMap: Map<Int, Pair<Int, Int>> = MovieImagePairsEnum.toMap()
+    private val movieImagePairsMap: Map<Int, Pair<Int, String>> = MovieImagePairsEnum.toMap()
 
     fun getMovieDetailsById(movieId: Int): MovieDetails? {
         val movieNullable = moviesRepository.getMovieById(movieId)
@@ -28,30 +28,30 @@ class MoviesDetailsRepository private constructor(){
 
     private enum class MovieImagePairsEnum(
         val id: Int,
-        val imageId: Int
+        val imageName: String
     ) {
         BLOOD_SHOT(
             1,
-            R.drawable.movie_bloodshot),
+            "movie_bloodshot"),
         BIRDS_OF_PRAY(
             2,
-            R.drawable.movie_birds_of_prey),
+            "movie_birds_of_prey"),
         SONIC_THE_HEDGEHOG(
             3,
-            R.drawable.movie_sonic_the_hedgehog),
+            "movie_sonic_the_hedgehog"),
         FROZEN_II(
             4,
-            R.drawable.movie_frozen_ii),
+            "movie_frozen_ii"),
         JUMANJI(
             5,
-            R.drawable.movie_jumanji_the_next_level)
+            "movie_jumanji_the_next_level")
         ;
 
         companion object {
-            fun toMap(): Map<Int, Pair<Int, Int>> {
-                val movieImagePairsMap = HashMap<Int, Pair<Int, Int>>()
+            fun toMap(): Map<Int, Pair<Int, String>> {
+                val movieImagePairsMap = HashMap<Int, Pair<Int, String>>()
                 values().map {pair ->
-                    movieImagePairsMap.put(pair.id, Pair(pair.id, pair.imageId)) }
+                    movieImagePairsMap.put(pair.id, Pair(pair.id, pair.imageName)) }
                 return movieImagePairsMap
             }
         }
