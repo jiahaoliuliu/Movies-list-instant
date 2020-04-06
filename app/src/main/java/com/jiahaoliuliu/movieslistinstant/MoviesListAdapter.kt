@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jiahaoliuliu.movieslistinstant.databinding.ItemMovieBinding
 
-class MoviesListAdapter(private val moviesList: List<IMovie>, private val onMovieClickListener: OnMovieClickListener): RecyclerView.Adapter<MovieViewHolder>() {
+class MoviesListAdapter(private val moviesList: List<com.jiahaoliuliu.datalayer.IMovie>, private val onMovieClickListener: OnMovieClickListener): RecyclerView.Adapter<MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -22,7 +22,7 @@ class MoviesListAdapter(private val moviesList: List<IMovie>, private val onMovi
 
 class MovieViewHolder(private val movieItemBinding: ItemMovieBinding) : RecyclerView.ViewHolder(movieItemBinding.root) {
 
-    fun bind(IMovie: IMovie) {
+    fun bind(IMovie: com.jiahaoliuliu.datalayer.IMovie) {
         movieItemBinding.movie = IMovie
         movieItemBinding.executePendingBindings()
     }

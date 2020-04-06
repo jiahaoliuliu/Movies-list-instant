@@ -1,4 +1,4 @@
-package com.jiahaoliuliu.movieslistinstant
+package com.jiahaoliuliu.datalayer
 
 class MoviesRepository private constructor(){
 
@@ -7,10 +7,11 @@ class MoviesRepository private constructor(){
     }
 
     companion object {
-        val instance: MoviesRepository by lazy {HOLDER.INSTANCE}
+        val instance: MoviesRepository by lazy { HOLDER.INSTANCE }
     }
 
-    private val moviesMap: Map<Int, IMovie> = MoviesListEnum.toMoviesList()
+    private val moviesMap: Map<Int, IMovie> =
+        MoviesListEnum.toMoviesList()
     private val moviesList = ArrayList(moviesMap.values)
 
     fun getMoviesList(): List<IMovie> {

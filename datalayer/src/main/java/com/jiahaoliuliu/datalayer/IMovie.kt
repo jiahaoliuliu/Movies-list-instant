@@ -1,4 +1,4 @@
-package com.jiahaoliuliu.movieslistinstant
+package com.jiahaoliuliu.datalayer
 
 abstract class IMovie{
     abstract val id: Int

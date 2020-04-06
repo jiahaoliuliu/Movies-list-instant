@@ -1,6 +1,6 @@
 package com.jiahaoliuliu.movieslistinstant.moviedetails
 
-import com.jiahaoliuliu.movieslistinstant.MoviesRepository
+import com.jiahaoliuliu.datalayer.MoviesRepository
 
 class MoviesDetailsRepository private constructor(){
 
@@ -14,7 +14,7 @@ class MoviesDetailsRepository private constructor(){
     }
 
     private val moviesRepository =
-        MoviesRepository.instance
+        com.jiahaoliuliu.datalayer.MoviesRepository.instance
 
     private val movieImagePairsMap: Map<Int, Pair<Int, Int>> =
         MovieImagePairsEnum.toMap()
