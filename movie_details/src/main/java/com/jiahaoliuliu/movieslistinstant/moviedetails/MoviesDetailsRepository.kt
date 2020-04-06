@@ -24,11 +24,11 @@ class MoviesDetailsRepository private constructor(){
         movieNullable?.let { movie ->
             val movieImagePairNullable = movieImagePairsMap[movieId]
             movieImagePairNullable?.let { movieImagePair ->
-                return com.jiahaoliuliu.movieslistinstant.moviedetails.MovieDetails(
+                return MovieDetails(
                     movie.id,
                     movie.title,
                     movie.description,
-                    movie.thumbnailId,
+                    movie.thumbnailName,
                     movieImagePair.second
                 )
             }

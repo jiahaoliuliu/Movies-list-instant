@@ -7,4 +7,4 @@ data class MovieDetails(
     override val title: String,
     override val description: String,
     override val thumbnailName: String,
-    val imageName: String): IMovie()
+    val imageId: Int): IMovie()
