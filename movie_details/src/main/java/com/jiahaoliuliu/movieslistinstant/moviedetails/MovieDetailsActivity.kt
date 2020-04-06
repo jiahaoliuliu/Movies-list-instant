@@ -8,14 +8,14 @@ import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-import com.jiahaoliuliu.datalayer.MoviesDetailsRepository
+import com.jiahaoliuliu.datalayer.MoviesRepository
 import com.jiahaoliuliu.movieslistinstant.moviedetails.databinding.ActivityMovieDetailsBinding
 import java.lang.IllegalArgumentException
 
 class MovieDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieDetailsBinding
-    private val moviesDetailsRepository = MoviesDetailsRepository.instance
+    private val moviesRepository = MoviesRepository.instance
     private var movieId = DEFAULT_MOVIE_ID
     private lateinit var glide: RequestManager
 
@@ -38,13 +38,11 @@ class MovieDetailsActivity : AppCompatActivity() {
             throw IllegalArgumentException("You must pass the movie id on the intent")
         }
 
-        binding = DataBindingUtil.setContentView(this,
-            R.layout.activity_movie_details
-        )
-        val movie = moviesDetailsRepository.getMovieDetailsById(movieId)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
+        val movie = moviesRepository.getMovieById(movieId)
         movie?.let {
             setupToolbar(it.title)
-            binding.movieDetails = it
+            binding.movie = it
             glide.load(it.imageUrl).into(binding.cover)
         } ?: run{
             throw IllegalArgumentException("Movie not found")

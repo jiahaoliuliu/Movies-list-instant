@@ -1,7 +1,4 @@
 package com.jiahaoliuliu.datalayer
 
-data class Movie(
-    override val id: Int,
-    override val title: String,
-    override val description: String,
-    override val thumbnailName: String): com.jiahaoliuliu.datalayer.IMovie()
+data class Movie(val id: Int, val title: String, val description: String, val thumbnailName: String,
+    val imageUrl: String)
