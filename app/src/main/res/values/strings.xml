@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Movies list instant</string>
+    <string name="title_movie_details">Movie details</string>
 </resources>
