@@ -4,4 +4,4 @@ abstract class IMovie{
     abstract val id: Int
     abstract val title: String
     abstract val description: String
-    abstract val thumbnailId: Int}
+    abstract val thumbnailName: String}

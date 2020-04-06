@@ -19,7 +19,7 @@ class MoviesDetailsRepository private constructor(){
         movieNullable?.let { movie ->
             val movieImagePairNullable = movieImagePairsMap[movieId]
             movieImagePairNullable?.let { movieImagePair ->
-                return MovieDetails(movie.id, movie.title, movie.description, movie.thumbnailId, movieImagePair.second)
+                return MovieDetails(movie.id, movie.title, movie.description, movie.thumbnailName, movieImagePair.second)
             }
         } ?: run {
             return null
