@@ -1,4 +1,6 @@
-package com.jiahaoliuliu.movieslistinstant
+package com.jiahaoliuliu.movieslistinstant.moviedetails
+
+import com.jiahaoliuliu.movieslistinstant.IMovie
 
 data class MovieDetails(
     override val id: Int,

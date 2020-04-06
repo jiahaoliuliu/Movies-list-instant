@@ -1,4 +1,4 @@
-package com.jiahaoliuliu.movieslistinstant
+package com.jiahaoliuliu.movieslistinstant.moviedetails
 
 import android.content.Context
 import android.content.Intent
@@ -6,14 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
-import com.jiahaoliuliu.movieslistinstant.databinding.ActivityMovieDetailsBinding
+import com.jiahaoliuliu.movieslistinstant.moviedetails.databinding.ActivityMovieDetailsBinding
 import java.lang.IllegalArgumentException
 
 class MovieDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieDetailsBinding
-    private val moviesDetailsRepository = MoviesDetailsRepository.instance
-    private var movieId = DEFAULT_MOVIE_ID
+    private val moviesDetailsRepository = com.jiahaoliuliu.movieslistinstant.moviedetails.MoviesDetailsRepository.instance
+    private var movieId =
+        DEFAULT_MOVIE_ID
 
     companion object {
         private const val INTENT_EXTRA_MOVIE_ID = "id"
@@ -33,7 +34,9 @@ class MovieDetailsActivity : AppCompatActivity() {
             throw IllegalArgumentException("You must pass the movie id on the intent")
         }
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
+        binding = DataBindingUtil.setContentView(this,
+            R.layout.activity_movie_details
+        )
         val movie = moviesDetailsRepository.getMovieDetailsById(movieId)
         movie?.let {
             binding.movieDetails = it
@@ -68,7 +71,10 @@ class MovieDetailsActivity : AppCompatActivity() {
                 }
             }
         } else {
-            return intent.getIntExtra(INTENT_EXTRA_MOVIE_ID, DEFAULT_MOVIE_ID)
+            return intent.getIntExtra(
+                INTENT_EXTRA_MOVIE_ID,
+                DEFAULT_MOVIE_ID
+            )
         }
         return DEFAULT_MOVIE_ID
     }
