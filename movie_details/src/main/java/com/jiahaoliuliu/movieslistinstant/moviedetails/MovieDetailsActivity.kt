@@ -1,4 +1,4 @@
-package com.jiahaoliuliu.movieslistinstant
+package com.jiahaoliuliu.movieslistinstant.moviedetails
 
 import android.content.Context
 import android.content.Intent
@@ -6,13 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
-import com.jiahaoliuliu.movieslistinstant.databinding.ActivityMovieDetailsBinding
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
+import com.jiahaoliuliu.datalayer.MoviesRepository
+import com.jiahaoliuliu.movieslistinstant.moviedetails.databinding.ActivityMovieDetailsBinding
 import java.lang.IllegalArgumentException
 
 class MovieDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieDetailsBinding
-    private val moviesDetailsRepository = MoviesDetailsRepository.instance
+    private val moviesRepository = MoviesRepository.instance
     private var movieId = DEFAULT_MOVIE_ID
 
     companion object {
@@ -34,10 +37,10 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
-        val movie = moviesDetailsRepository.getMovieDetailsById(movieId)
+        val movie = moviesRepository.getMovieById(movieId)
         movie?.let {
-            binding.movieDetails = it
             setupToolbar(it.title)
+            binding.movie = it
         } ?: run{
             throw IllegalArgumentException("Movie not found")
         }
@@ -68,7 +71,10 @@ class MovieDetailsActivity : AppCompatActivity() {
                 }
             }
         } else {
-            return intent.getIntExtra(INTENT_EXTRA_MOVIE_ID, DEFAULT_MOVIE_ID)
+            return intent.getIntExtra(
+                INTENT_EXTRA_MOVIE_ID,
+                DEFAULT_MOVIE_ID
+            )
         }
         return DEFAULT_MOVIE_ID
     }

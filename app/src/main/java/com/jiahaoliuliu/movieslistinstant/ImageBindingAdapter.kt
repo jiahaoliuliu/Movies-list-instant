@@ -5,10 +5,7 @@ import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 
 class ImageBindingAdapter {
-
     companion object {
-        @DrawableRes
-        private const val PLACEHOLDER: Int = R.drawable.movie_bloodshot
         private const val DRAWABLE = "drawable"
 
         @BindingAdapter("imageFromResources")
@@ -20,7 +17,7 @@ class ImageBindingAdapter {
             if (drawableResourceId != 0) {
                 imageView.setImageResource(drawableResourceId)
             } else {
-                imageView.setImageResource(PLACEHOLDER)
+                imageView.setImageResource(R.drawable.movie_bloodshot_thumb)
             }
         }
     }

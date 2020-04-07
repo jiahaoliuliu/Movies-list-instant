@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val recyclerView = findViewById<RecyclerView>(R.id.movies_list)
-        val moviesRepository = MoviesRepository.instance
+        val moviesRepository = com.jiahaoliuliu.datalayer.MoviesRepository.instance
         val moviesListAdapter = MoviesListAdapter(moviesRepository.getMoviesList(), this)
         recyclerView.adapter = moviesListAdapter
     }
