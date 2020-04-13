@@ -30,7 +30,7 @@ android {
 }
 
 dependencies {
-    api project(':movie-base')
-    api project(':movie_details')
+    implementation project(':movie-base')
+    implementation project(':movie_details')
     kapt "com.android.databinding:compiler:$androidGradle"
 }
